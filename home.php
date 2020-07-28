@@ -137,27 +137,7 @@
     <!-- javascript files -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
-    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="assets/vendor/counterup/counterup.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/venobox/venobox.min.js"></script>
-    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <!-- custom js file -->
-    <script src="assets/js/main.js"></script>
-    <script>
-        $(window).on("scroll", function () {
-            let scrollAmount = window.scrollY;
-            if (scrollAmount == 0) {
-                $("li.index a").css("color", "#111");
-            }
-            if (scrollAmount > 0) {
-                $("li.index a").css("color", "#111");
-            }
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
