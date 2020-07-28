@@ -1,3 +1,13 @@
+<?php
+
+require 'classes/config.php';
+
+$db=Database::getInstance();
+if(!$db->getError()){
+    echo 'success in connection';
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +18,10 @@
         form{
             display:flex;
             flex-direction:row;
+            margin-left:20px;
+        }
+        li{
+            list-style-type:none;
         }
     </style>
 </head>
@@ -15,9 +29,11 @@
     <form action="">
         <input type="text" name="" id="value">
         <input type="submit" id="add-btn"value="Add">
+        <input type="submit" value="save">
     </form>
+
     <ul id="list-menu-items">
-    
+
     </ul>
     <script src="app.js"></script>
 </body>
