@@ -38,46 +38,7 @@
             <!-- item 1 (level-1) -->
             <div class="form-group col-md-12">
                 <ul class="list-group ul-items">
-                    <div id="item-2" class="level-1">
-                        <li class="list-group-item d-flex justify-content-between align-items-center ">
-                            <div class="text-container">
-                                <h6>Services</h6>
-                            </div>
-                            <div>
-                            <button type="button" class="btn btn-primary"><i
-                                            class="icofont-ui-add"></i></button>
-                                <button type="button" class="btn btn-primary"><i class="icofont-ui-edit"></i></button>
-                                <button type="button" class="btn btn-primary"><i class="icofont-ui-delete"></i></button>
-                                <button type="button" class="btn btn-primary"><i class="icofont-sub-listing"
-                                        data-toggle="collapse" data-target="#item-2-1" aria-expanded="false"
-                                        aria-controls="item-2-1"></i></button>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="collapse" id="item-2-1">
-                        <div class="form-group col-md-12">
-                            <ul class="group-list">
-                                <div >
-                                    <li class="list-group-item d-flex justify-content-between align-items-center ">
-                                        <div class="text-container">
-                                            <h6>Repair</h6>
-                                        </div>
-                                        <div>
-                                        <button type="button" class="btn btn-primary"><i
-                                            class="icofont-ui-add"></i></button>
-                                            <button type="button" class="btn btn-primary"><i
-                                                    class="icofont-ui-edit"></i></button>
-                                            <button type="button" class="btn btn-primary"><i
-                                                    class="icofont-ui-delete"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="icofont-sub-listing"
-                                                    data-toggle="collapse" data-target="" aria-expanded="false"
-                                                    aria-controls="item-1-1"></i></button>
-                                        </div>
-                                    </li>
-                                </div>
-                            </ul>
-                        </div>
-                    </div> 
+                    
                 </ul>
             </div>
             <!-- save button -->
