@@ -27,7 +27,8 @@ class Database{
     public function getError(){
         return $this->error;
     }
-}
+    }
+
 
 
 

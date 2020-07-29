@@ -1,3 +1,9 @@
+<?php
+ session_start();
+ if(!isset($_SESSION["user"])){
+     header("Location: index.php");
+ }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +22,7 @@
     <div class="main">
     <div class="form-row">
                 <div class="form-group col-md-4">
-                    <h6 class="menu-heading">Navigation Structure</h6>
+                    <h4 class="menu-heading">Navigation Structure</h4>
                 </div>
             </div>
             <!-- add button -->
