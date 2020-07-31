@@ -2,7 +2,7 @@ let menu_items = new Array();
 window.onload = function () {
     let menu_items = document.cookie.split(`;`);
     let json_array = menu_items[0].split("=")[1];
-     menu_items = JSON.parse(json_array);
+    menu_items = JSON.parse(json_array);
     add_cookie_markup(menu_items);
 }
 
@@ -10,21 +10,21 @@ const add_btn = document.querySelector("#add-btn");
 const input_value = document.getElementById("value");
 const input_link = document.getElementById("link");
 const ul_items = document.querySelector(".ul-items");
-const save_btn=document.getElementById('save-btn');
-save_btn.addEventListener('click',(e)=>{
+const save_btn = document.getElementById('save-btn');
+save_btn.addEventListener('click', (e) => {
     e.preventDefault();
     let menu_items = document.cookie.split(`;`);
     let json_array = menu_items[0].split("=")[1];
-     menu_items = JSON.parse(json_array);
-   console.log(JSON.stringify( menu_items));
-   let xhr=new XMLHttpRequest();
-        xhr.open('POST','./classes/upload_menu.php?menu='+JSON.stringify(menu_items),true);
-        xhr.onload=function(){
-            if(this.status==200){
-                console.log(this.responseText);
-            }
+    menu_items = JSON.parse(json_array);
+    console.log(JSON.stringify(menu_items));
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', './classes/upload_menu.php?menu=' + JSON.stringify(menu_items), true);
+    xhr.onload = function () {
+        if (this.status == 200) {
+            console.log(this.responseText);
         }
-        xhr.send();
+    }
+    xhr.send();
 })
 
 
@@ -32,26 +32,24 @@ function add_cookie_markup(menu_array) {
     menu_array.forEach(item => {
         let mark_up_item = get_mark_up_menu_item_1st(item.text);
         ul_items.innerHTML += mark_up_item;
-        if(item.sub_items.length!=0){
-        set_second_level_cookie(item.text,item.sub_items);
+        if (item.sub_items.length != 0) {
+            set_second_level_cookie(item.text, item.sub_items);
         }
     })
 }
 
-function set_second_level_cookie(parent,menu_arr){
-    menu_arr.forEach(item=>{
+function set_second_level_cookie(parent, menu_arr) {
+    menu_arr.forEach(item => {
         let ul_menu_item = document.querySelector(`#${parent}-sub div ul`);
-        ul_menu_item.innerHTML+=get_mark_up_menu_item_2nd(item.text);
-        if(item.sub_items,length!=0)
-        {
-        set_third_level_cookie(item.text,item.sub_items);
+        ul_menu_item.innerHTML += get_mark_up_menu_item_2nd(item.text);
+        if (item.sub_items, length != 0) {
+            set_third_level_cookie(item.text, item.sub_items);
         }
     })
 }
 
-function set_third_level_cookie(parent,menu_arr)
-{
-    menu_arr.foreach(item=>{
+function set_third_level_cookie(parent, menu_arr) {
+    menu_arr.foreach(item => {
         let ul_menu_item = document.querySelector(`#${parent}-sub-sub div ul`);
         ul_menu_item.innerHTML += get_mark_up_menu_item_3rd(item.text);
     })
@@ -88,27 +86,24 @@ function set_first_level_menu() {
 function get_mark_up_menu_item_1st(value) {
     return `
     <div>
-    <li class="list-group-item d-flex justify-content-between align-items-center ">
-        <div class="text-container">
-            <h6>${value}</h6>
-        </div>
-        <div>
-            <button type="button" data-name="${value}" class="btn btn-primary add-sub-btn"><i
-                        class="icofont-ui-add"></i></button>
-            <button type="button" class="btn btn-primary"><i class="icofont-ui-edit edit-btn"></i></button>
-            <button type="button" class="btn btn-primary"><i class="icofont-ui-delete"></i></button>
-            <button type="button" class="btn btn-primary"><i class="icofont-sub-listing"
-                    data-toggle="collapse" data-target="#${value}-sub" aria-expanded="false"
-                    aria-controls="${value}-sub"></i></button>
-        </div>
-    </li>
-</div>
-<div class="collapse" id="${value}-sub">
-    <div class="form-group col-md-12">
-        <ul class="group-list">
-        </ul>
+        <li class="list-group-item d-flex justify-content-between align-items-center ">
+            <div class="text-container">
+                <h6>${value}</h6>
+            </div>
+            <div>
+                <button type="button" data-name="${value}" class="btn btn-primary add-sub-btn"><i class="icofont-ui-add"></i></button>
+                <button type="button" class="btn btn-primary"><i class="icofont-ui-edit edit-btn"></i></button>
+                <button type="button" class="btn btn-primary"><i class="icofont-ui-delete"></i></button>
+                <button type="button" class="btn btn-primary"><i class="icofont-sub-listing" data-toggle="collapse" data-target="#${value}-sub" aria-expanded="false" aria-controls="${value}-sub"></i></button>
+            </div>
+        </li>
     </div>
-</div> 
+    <div class="collapse" id="${value}-sub">
+        <div class="form-group col-md-12">
+            <ul class="group-list">
+            </ul>
+        </div>
+    </div> 
     `;
 }
 
@@ -150,27 +145,24 @@ function set_second_level_menu() {
 function get_mark_up_menu_item_2nd(value) {
     return `
     <div>
-    <li class="list-group-item d-flex justify-content-between align-items-center ">
-        <div class="text-container">
-            <h6>${value}</h6>
+        <li class="list-group-item d-flex justify-content-between align-items-center ">
+            <div class="text-container">
+                <h6>${value}</h6>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary add-sub-sub-btn"  data-name="${value}"><i class="icofont-ui-add"></i></button>
+                <button type="button" class="btn btn-primary"><i class="icofont-ui-edit"></i></button>
+                <button type="button" class="btn btn-primary"><i class="icofont-ui-delete"></i></button>
+                <button type="button" class="btn btn-primary"><i class="icofont-sub-listing" data-toggle="collapse" data-target="#${value}-sub-sub" aria-expanded="false" aria-controls="${value}-sub-sub"></i></button>
+            </div>
+        </li>
+    </div>
+    <div class="collapse" id="${value}-sub-sub">
+        <div class="form-group col-md-12">
+            <ul class="group-list">
+            </ul>
         </div>
-        <div>
-        <button type="button" class="btn btn-primary add-sub-sub-btn"  data-name="${value}"><i
-                        class="icofont-ui-add"></i></button>
-            <button type="button" class="btn btn-primary"><i class="icofont-ui-edit"></i></button>
-            <button type="button" class="btn btn-primary"><i class="icofont-ui-delete"></i></button>
-            <button type="button" class="btn btn-primary"><i class="icofont-sub-listing"
-                    data-toggle="collapse" data-target="#${value}-sub-sub" aria-expanded="false"
-                    aria-controls="${value}-sub-sub"></i></button>
-        </div>
-    </li>
-</div>
-<div class="collapse" id="${value}-sub-sub">
-<div class="form-group col-md-12">
-    <ul class="group-list">
-    </ul>
-</div>
-</div> 
+    </div> 
     `;
 }
 
