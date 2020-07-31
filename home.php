@@ -1,12 +1,11 @@
 <?php
- session_start();
- if(!isset($_SESSION["user"])){
-     header("Location: index.php");
- }
+require 'core/init.php';
+    if(!isset($_SESSION["user"])){
+        header("Location: index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -20,6 +19,8 @@
 
 <body>
     <div class="main">
+    <button name="logout"  class="btn btn-primary logout" style="margin:0 auto; padding:0.5rem 2rem;  border:none; color:#fff;">Logout</button>
+
     <div class="form-row">
                 <div class="form-group col-md-4">
                     <h4 class="menu-heading">Navigation Structure</h4>
@@ -48,9 +49,12 @@
                 </ul>
             </div>
             <!-- save button -->
-            <input type="submit" value="Save Menu"   class="btn btn-primary" id="save-btn" style=" padding:0.5rem 2rem; margin-top: 1rem; border:none; color:#fff;" >
+            <input type="hidden" name="id" id="user-id"value="<?php echo $_GET['id']; ?>">
+            <input type="submit" value="Save Menu"   class="btn btn-primary" id="save-btn" style=" padding:0.5rem 2rem; margin-top: 1rem; border:none; color:#fff;">
+
         </form>
     </div>
+  
     <!-- javascript files -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

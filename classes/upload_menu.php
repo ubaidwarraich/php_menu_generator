@@ -1,2 +1,4 @@
 <?php
-echo $_GET['menu'];
+if(isset($_GET)){
+    echo $_GET['user-id'];
+}

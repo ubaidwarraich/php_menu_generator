@@ -13,8 +13,11 @@ require_once 'core/init.php';
     ));
     if($validation->passed()){
       $user=new User;
-      $user->login(Input::get('username'),Input::get('password'));
-      die();
+      if($user->login(Input::get('username'),Input::get('password')))
+      {
+        $_SESSION['user']=Input::get('username');
+        header('Location: home.php?id='.$user->getId());
+      }
     }
 }
 ?>

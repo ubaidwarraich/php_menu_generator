@@ -11,14 +11,16 @@ const input_value = document.getElementById("value");
 const input_link = document.getElementById("link");
 const ul_items = document.querySelector(".ul-items");
 const save_btn = document.getElementById('save-btn');
+const user_id=document.getElementById('user-id').value;
+
 save_btn.addEventListener('click', (e) => {
     e.preventDefault();
     let menu_items = document.cookie.split(`;`);
     let json_array = menu_items[0].split("=")[1];
     menu_items = JSON.parse(json_array);
-    console.log(JSON.stringify(menu_items));
+    // console.log(JSON.stringify(menu_items));
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', './classes/upload_menu.php?menu=' + JSON.stringify(menu_items), true);
+    xhr.open('POST', './classes/upload_menu.php?menu=' + JSON.stringify(menu_items)+"&user-id="+user_id, true);
     xhr.onload = function () {
         if (this.status == 200) {
             console.log(this.responseText);
@@ -212,4 +214,19 @@ function get_mark_up_menu_item_3rd(value) {
                 </li>
             </div>
             `;
+}
+
+const logout_btn=document.querySelector('.logout');
+logout_btn.addEventListener('click',logout);
+function logout(){
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', './logout.php?logout='+true,true);
+    xhr.onload = function () {
+        if (this.status == 200) {
+            if(this.responseText==true){
+                location.reload();
+            }
+        }
+    }
+    xhr.send();
 }
