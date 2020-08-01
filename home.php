@@ -4,7 +4,7 @@ require 'core/init.php';
         header("Location: index.php");
     }
     if(isset($_POST['preview'])){
-        header("Location: preview.php");
+        header("Location: preview.php?id=". $_GET['id']);
     }
 ?>
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ require 'core/init.php';
                 </ul>
             </div>
             <!-- save button -->
-            <input type="hidden" name="id" id="user-id"value="<?php echo $_GET['id']; ?>">
+            <input type="hidden" name="id" id="user-id"value="<?php echo isset($_GET['id'])? $_GET['id']:''; ?>">
             <div class="row">
                 <input type="submit" value="Save Menu"   class="btn btn-primary" id="save-btn" style=" padding:0.5rem 2rem; background-color:#007bff; margin-top: 1rem; border:none; color:#fff;">
             </div>
