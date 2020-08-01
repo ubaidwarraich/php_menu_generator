@@ -23,7 +23,10 @@ save_btn.addEventListener('click', (e) => {
     xhr.open('POST', './classes/upload_menu.php?menu=' + JSON.stringify(menu_items)+"&user-id="+user_id, true);
     xhr.onload = function () {
         if (this.status == 200) {
-            console.log(this.responseText);
+            if(this.responseText==true){
+                window.alert('Menu Saved Successfully');
+                location.reload();
+            }
         }
     }
     xhr.send();

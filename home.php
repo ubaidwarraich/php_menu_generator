@@ -3,6 +3,9 @@ require 'core/init.php';
     if(!isset($_SESSION["user"])){
         header("Location: index.php");
     }
+    if(isset($_POST['preview'])){
+        header("Location: preview.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +22,6 @@ require 'core/init.php';
 
 <body>
     <div class="main">
-    <button name="logout"  class="btn btn-primary logout" style="margin:0 auto; padding:0.5rem 2rem;  border:none; color:#fff;">Logout</button>
-
     <div class="form-row">
                 <div class="form-group col-md-4">
                     <h4 class="menu-heading">Navigation Structure</h4>
@@ -41,7 +42,7 @@ require 'core/init.php';
                                 </div>
                             </div>
         <!-- form -->
-        <form>
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
             <!-- item 1 (level-1) -->
             <div class="form-group col-md-12">
                 <ul class="list-group ul-items">
@@ -50,8 +51,13 @@ require 'core/init.php';
             </div>
             <!-- save button -->
             <input type="hidden" name="id" id="user-id"value="<?php echo $_GET['id']; ?>">
-            <input type="submit" value="Save Menu"   class="btn btn-primary" id="save-btn" style=" padding:0.5rem 2rem; margin-top: 1rem; border:none; color:#fff;">
-
+            <div class="row">
+                <input type="submit" value="Save Menu"   class="btn btn-primary" id="save-btn" style=" padding:0.5rem 2rem; background-color:#007bff; margin-top: 1rem; border:none; color:#fff;">
+            </div>
+            <div class="row">
+                <button name="logout"  class="btn btn-primary logout" style="margin:0 auto; padding:0.5rem 2rem;  border:none; color:#fff;">Logout</button>
+                <button name="preview"  class="btn btn-primary preview" style="margin:0 auto; padding:0.5rem 2rem;  border:none; color:#fff;">Preview Menu</button>
+            </div>
         </form>
     </div>
   

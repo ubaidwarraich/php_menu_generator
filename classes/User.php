@@ -7,8 +7,8 @@ class User{
         $this->db=Database::getInstance();
     }
     private function checkUser($param){
-       $data= $this->db->get('users',array('username','=','admin'));
-       $this->_data=$data->results();
+        $data= $this->db->get('users',array('username','=','admin'));
+        $this->_data=$data->results();
     }
     public function login($username,$password){
         $this->checkUser($username);
