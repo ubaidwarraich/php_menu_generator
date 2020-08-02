@@ -4,7 +4,7 @@ require 'core/init.php';
         header("Location: index.php");
     }
     if(isset($_POST['preview'])){
-        header("Location: preview.php?id=". $_GET['id']);
+        header('Location: preview.php');
     }
 ?>
 <!DOCTYPE html>

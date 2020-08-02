@@ -1,7 +1,7 @@
 <?php
-class MenuInsert{
-    private $menu,
-            $db,
+class Menu{
+    private $db,
+            $menu=null,
             $table='menu',
             $dberror=false;
     public function __construct(){
@@ -20,8 +20,16 @@ class MenuInsert{
             }
         $this->db -> close();
     }
+    public function getMenu($user_id){
+        $sql="SELECT *FROM menu WHERE user_id={$user_id} ORDER BY time DESC";
+        if($result=$this->db->query($sql)){
+            $row = $result -> fetch_assoc();
+            return $this->menu=$row['menu'];  
+        }
+        return null;
+    }
 }
-if(isset($_GET)){
-    $menu=new MenuInsert();
+if(isset($_GET['user-id'])){
+    $menu=new Menu();
     $menu->insertMenu($_GET['user-id'],$_GET['menu']);
 }

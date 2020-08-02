@@ -6,8 +6,12 @@ class User{
     public function __construct(){
         $this->db=Database::getInstance();
     }
-    private function checkUser($param){
+    public function checkUser($param){
         $data= $this->db->get('users',array('username','=','admin'));
+        $this->_data=$data->results();
+    }
+    public function getUserbyId($id){
+        $data=$this->db->get('users',array('id','=',$id));
         $this->_data=$data->results();
     }
     public function login($username,$password){
